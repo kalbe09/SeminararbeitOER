@@ -1,0 +1,113 @@
+% !TeX document-id = {b0ca628d-fa0a-486c-ae9b-26ef260b81e9}
+%!TEX TS-program = pdflatex
+%!GEDIT texbin = /usr/local/texlive/current/bin/x86_64-linux/pdflatex
+% Local IspellDict: en
+%
+% Documentation for the DBIS Group style LaTeX template
+%
+% Copyright © 2013-2020 DBIS Group, WWU Münster, in particular:
+%   Till Haselmann <haselmann@wi.uni-muenster.de>
+%   Jens Lechtenbörger <lechten@wi.uni-muenster.de>
+%   Florian Stahl  <flst@wi.uni-muenster.de>
+% All rights reserved.
+%
+
+
+% documentation.tex
+%
+% Basic file to demonstrate the usage of the DBIS Group LaTeX template.
+% You can build your own paper/thesis on top of this file.  Simply adjust
+% all metadata and delete the inclusion of documentation-preamble
+% Then, change the inclusion of documentation-body to your own file.
+%
+
+\documentclass[
+%    dbisthesis=false,        % Set to false for jointly supervised thesis.
+%    license=cc-by-sa,        % Publish under free and open license.
+    disabletodonotes,         % Do not show todo notes in final PDF.
+    language=german           % Set language: "english" or "german"
+  ]{dbisseminar}
+\ifthenelse{\boolean{dbispaper@dbisthesis}}{}{%
+  \renewcommand{\cProf}{Prof. Dr. Heike Trautmann\\Prof. Dr. Gottfried Vossen}}
+
+% Author(s) of paper
+% Format like this: Firstname Lastname \email{Email Address}
+% Multiple authors can be separated by "\and".
+% (In case of multiple authors, no consent form for plagiarism checks
+% is produced.  In that case, please use forms provided over there and
+% hand them in separately:
+% http://www.wiwi.uni-muenster.de/pruefungsamt/downloads/downloads.html)
+\author{%
+  Kira Alberding \email{k{\_}albe09@uni-muenster.de} % \and
+  %Till Haselmann \email{haselmann@wi.uni-muenster.de}
+}
+
+% Topic of paper
+\title{Entwicklung einer webbasierten kollaborativen Karteikarten-Software nach Anforderungen von OER}
+
+% Due date of paper in format YYYY-MM-DD
+\date{2021-01-18}
+
+% Responsible supervisor(s) at DBIS Group
+% Multiple supervisors can be separated by \and
+\supervisor{Dr.\ Jens Lechtenbörger}
+
+% Title of seminar
+\seminartitle{Open Education Resources}
+
+% Place and date of handing in the paper (for plagiarism declaration)
+% For the date field use the following convention:
+%   German date   -> dd.mm.yyyy       e.g.: 31.05.2011
+%   English date  -> Month dd, yyyy   e.g.: May 31, 2011
+\placeOfSignature{M{\"u}nster}
+\dateOfSignature{18 Januar 2021}
+\studentNumber{417911}
+\studentAddress{Rudolf-Harbig Weg 46, 48149 M{\"u}nster}
+\courseOfStudy{Wirtschaftsinformatik} % or Information Systems
+
+\include{documentation-preamble}
+
+\begin{document}
+  % Create title page
+  \maketitle
+
+  \frontmatter
+
+
+  %Abstract
+  \begin{abstract}
+Karteikarten sind eine der beliebtesten Lernmethoden, nicht nur für Schüler und Studenten, sondern auch für viele weitere Anspruchsgruppen. Zu den Inhalten zählen schon längst nicht mehr nur Sprachvokabeln, die eher eine geringere Funktionalität erfordern. Auch andere Fachbereiche finden hier Einzug, wie beispielsweise Mathematik und Chemie, die allerdings erweiterte Funktionen, wie die Eingabe von Formeln verlangen. Diese sind jedoch nach Durchführung der noch folgenden Evaluation nicht sehr häufig in denen am Markt befindlichen Anwendungen vorhanden. Ein weiteres Defizit der Angebote besteht in der fehlenden Möglichkeit zur Zusammenarbeit mit anderen Lernenden. Zwar lassen sich oft Kurse bzw. Kollektionen teilen, jedoch fehlt der gemeinschaftliche Zugriff in Echtzeit oder die Bewertungsmöglichkeiten für einzelne Karteikarten, um geringwertige Karten auszusortieren. Mit Berücksichtigung der Anforderungen des Prinzips Open Educational Resources (OER) wird im Rahmen dieser Seminararbeit eine webbasierte Anwendung entwickelt, die den Bildungszugang erleichtern und redundante Arbeit, durch die Zusammenarbeit mit anderen vermeiden soll.
+  \end{abstract}
+
+  % Table of contents
+  \tableofcontents
+  \pagestyle{plain}
+  \newpage
+  \pagestyle{plain}
+
+  \listofabbreviations
+  \glsaddall
+  \listofsymbols
+
+
+  \mainmatter
+  \include{Seminararbeit-body}
+
+  % Include (1) literature and (2) web references in separate BibTeX files
+  \dbisbibliography{LiteratureSample}{WebReferencesSample}
+
+%  \section*{\appendixname}
+%  \appendix
+%  \section{Test}
+%  No real text here, just a test appendix.  For bachelor and master
+%  theses, you should use chapters in the appendix, not sections.
+
+  % Make sure that final declarations start on separate page.
+  \newpage
+\end{document}
+
+% The following is for the Emacs users out there... :-)
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,93 @@
+% Package to provide commonly used abbreviations for DBIS Group papers
+%
+% Copyright © 2011-2018 DBIS Group, WWU Münster, in particular:
+%           Till Haselmann <haselmann@wi.uni-muenster.de>
+%           Florian Stahl  <flst@wi.uni-muenster.de>
+% All rights reserved.
+%
+
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{dbisabbreviations}[2018/08/30 Package to provide commonly used abbreviations for DBIS Group papers (Till Haselmann)]
+
+% TODO Make xspace respect German closing quote (“)
+\usepackage{xspace}           % For correct spacing after abbrevations
+\DeclareRobustCommand\xdot{.\@\xspace}
+
+\newcommand{\Chpref}[1]{Chapter~\ref{#1}}
+\newcommand{\Figref}[1]{Figure~\ref{#1}}
+\newcommand{\Lstref}[1]{Listing~\ref{#1}}
+\newcommand{\Secref}[1]{Section~\ref{#1}}
+\newcommand{\Tblref}[1]{Table~\ref{#1}}
+
+% ENGLISH ABBREVIATIONS
+\newcommand{\cf}{\mbox{cf}\xdot}
+\newcommand{\eg}{\mbox{e.\,g}\xdot}
+\newcommand{\Eg}{\mbox{E.\,g}\xdot}
+\newcommand{\etal}{\mbox{et\,al}\xdot}
+\newcommand{\etc}{\mbox{etc}\xdot}
+\newcommand{\ie}{\mbox{i.\,e}\xdot}
+\newcommand{\Ie}{\mbox{I.\,e}\xdot}
+\newcommand{\p}[1]{\mbox{p.~#1}}
+\newcommand{\pp}[1]{\mbox{pp.~#1}}
+\newcommand{\resp}{\mbox{resp}\xdot}
+\newcommand{\vs}{\mbox{vs}\xdot}
+
+% GERMAN ABBREVIATIONS
+\newcommand{\aaO}{\mbox{a.\,a.\,O}\xdot}
+\newcommand{\Abb}{\mbox{Abb.~}}
+\newcommand{\bspw}{\mbox{bspw}\xdot}
+\newcommand{\bzgl}{\mbox{bzgl}\xdot}
+\newcommand{\bzw}{\mbox{bzw}\xdot}
+\newcommand{\ca}{\mbox{ca}\xdot}
+\newcommand{\eV}{\mbox{e.\,V}\xdot}
+\newcommand{\evtl}{\mbox{evtl}\xdot}
+\newcommand{\gdw}{\mbox{g.\,d.\,w}\xdot}
+\newcommand{\ggf}{\mbox{ggf}\xdot}
+\newcommand{\hc}{\mbox{h.\,c}\xdot}
+\newcommand{\iAllg}{\mbox{i.\,Allg}\xdot}
+\newcommand{\idR}{\mbox{i.\,d.\,R}\xdot}
+\newcommand{\ieS}{\mbox{i.\,e.\,S}\xdot}
+\newcommand{\inkl}{\mbox{inkl}\xdot}
+\newcommand{\insb}{\mbox{insb}\xdot}
+\newcommand{\iwS}{\mbox{i.\,w.\,S}\xdot}
+\newcommand{\Nr}[1]{\mbox{Nr.~#1}}
+\newcommand{\oa}{\mbox{o.\,a}\xdot}
+\newcommand{\oAe}{\mbox{o.\,\"{A}}\xdot}
+\newcommand{\oae}{\mbox{o.\,\"{a}}\xdot}
+\newcommand{\oV}{\mbox{o.\,V}\xdot}
+\newcommand{\OV}{\mbox{O.\,V}\xdot}
+\newcommand{\Sf}[1]{\mbox{S.~#1~f}\xdot}
+\newcommand{\Sff}[1]{\mbox{S.~#1~ff}\xdot}
+\newcommand{\so}{\mbox{s.\,o}\xdot}
+\newcommand{\sog}{\mbox{sog}\xdot}
+\newcommand{\sS}[1]{\mbox{s.\,S.~#1}}
+\newcommand{\sSf}[1]{\mbox{s.\,S.~#1~f}\xdot}
+\newcommand{\sSff}[1]{\mbox{s.\,S.~#1~ff}\xdot}
+\newcommand{\su}{\mbox{s.\,u}\xdot}
+\newcommand{\Tab}{\mbox{Tab.~}}
+\newcommand{\ua}{\mbox{u.\,a}\xdot}
+\newcommand{\uae}{\mbox{u.\,\"{a}}\xdot}
+\newcommand{\uAe}{\mbox{u.\,\"{A}}\xdot}
+\newcommand{\usw}{\mbox{usw}\xdot}
+\newcommand{\uU}{\mbox{u.\,U}\xdot}
+\newcommand{\vgl}{\mbox{vgl.~}}
+\newcommand{\Vgl}{\mbox{Vgl.~}}
+\newcommand{\zB}{\mbox{z.\,B}\xdot}
+\newcommand{\zT}{\mbox{z.\,T}\xdot}
+\newcommand{\zzgl}{\mbox{zzgl}\xdot}
+
+% Overwrite a few macros for german texts
+\ifthenelse{\equal{\dbispaper@language}{german}}{
+  \renewcommand{\Chpref}[1]{Kapitel~\ref{#1}}
+  \renewcommand{\Figref}[1]{Abbildung~\ref{#1}}
+  \renewcommand{\Lstref}[1]{Listing~\ref{#1}}
+  \renewcommand{\Secref}[1]{Abschnitt~\ref{#1}}
+  \renewcommand{\Tblref}[1]{Tabelle~\ref{#1}}
+
+  \renewcommand{\S}[1]{\mbox{S.~#1}}
+  \renewcommand{\dh}{\mbox{d.\,h}\xdot} % Achtung: überschreibt ursprüngliches \dh
+}{}
+
+\newcommand{\acused}[1]{\vphantom{\ac{#1}}}
+\newcommand{\acmain}[1]{\emph{\acl{#1}} (\acs{#1})\acused{#1}}
