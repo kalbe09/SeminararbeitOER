@@ -156,11 +156,10 @@ Die Anwendung wurde trotz der mangelnden Funktionen als Entwicklungsgrundlage au
 
 
 \section{Dokumentation der webbasierten Anwendung Kicards}
-Auf Grundlage der vorher ermittelten Anforderungen und Funktionen aus den eigenen Erfahrungen und den evaluierten Softwareprodukten ist das Ziel dieser Seminararbeit eine webbasierte und effiziente Anwendung zu implementieren \cite{kicards}, die die Anforderungen an OER-Software erfüllt. Nachfolgend werden zunächst alle benötigten Funktionen aufgelistet, die der Erfüllung der Anforderungen dienen. Anschließend werden zur Modellierungszwecke das Datenbankmodell, die Umsetzung der Lernmethoden und Funktionen zur kollaborativen Zusammenarbeit und Verwaltung von Karteikarten vorgestellt.
-
+Auf Grundlage der vorher ermittelten Anforderungen und Funktionen, ist das Ziel dieser Seminararbeit eine webbasierte und effiziente Anwendung zu entwerfen \cite{kicards}, die den Anforderungen an OER-Software gerecht wird. Zu diesem Zweck werden zunächst alle benötigten Funktionen aufgelistet, um in einem nächsten Schritt eine Datenbank zu modellieren.
 
 \subsection{Funktionsübersicht}
-In der nachfolgenden Abbildung 3 wurden alle zu implementierenden Funktionen in must-, could-, und should-have Kategorien eingeteilt, um eine Priorisierung und einen Laufplan für die Entwicklung zu erhalten. Alle Funktionen innerhalb der must-have Kategorie sind unbedingt zu implementieren. In der should-have Kategorie sind alle Funktionen zu finden die eingearbeitet werden sollten und die Funktionen in der could-have Kategorie können bei Bedarf und Gelegenheit implementiert werden, sind allerdings nicht unbedingt erforderlich. \\
+In der nachfolgenden Abbildung 3 werden alle zu implementierenden Funktionen in \emph{must-, could-, und should-have}-Kategorien eingeteilt, um eine Priorisierung und einen Laufplan für die Entwicklung zu erhalten. \\
 
 \begin{figure}[htbp]
 \begin{center}
@@ -171,28 +170,43 @@ In der nachfolgenden Abbildung 3 wurden alle zu implementierenden Funktionen in 
 \end{center}
 \end{figure}
 
-Zunächst sind die Anforderungen für OER-Software zu finden, die alle in der must-have Kategorie eingeteilt wurden. Darunter fällt unter anderem die Forderung die benötigte Fachkenntnis zu reduzieren. Dies soll durch die Anzeige der wichtigsten Markdown-Sytnax, während der Erstellung und Bearbeitung von Karteikarten erreicht werden. Eine weitere Anforderung ist die Plattformunabhängigkeit, die zunächst durch eine webbasierte Anwendung erfüllt wird und in der späteren Entwicklung auch offline auf mobile Endgeräte zur Verfügung stehen soll. Die Freiheit der Bearbeitungssoftware und der Zugriff auf diese ist durch die Bereitstellung auf GitHub gewährleistet, in der auch Quellmaterialien zur Verfügung gestellt werden können. Zur Erfüllung des "Source-file access" werden Import- und Exportfunktionen implementiert, die auf eine Trennung von Layout und Inhalt abzielen. Um den Anforderung des Single-Sourcings weiter gerecht zu werden, soll durch ein internes Versionskontrollsystem eine gemeinschaftliche Bearbeitung ermöglicht werden.\\
+Zunächst sind die Anforderungen an OER-Software zu finden, die alle in die \emph{must-have}-Kategorie eingeordnet wurden. 
+Die Freiheit der Bearbeitungssoftware und dessen Zugriff wird durch die Bereitstellung auf GitHub gewährleistet \cite{kicards}. Auch die Quellmaterialien könnten hier zur Verfügung gestellt werden. 
+Weiterhin wird eine Reduzierung der Fachkenntnis, durch die Anzeige der wichtigsten Syntax für die Formatierung des Textes, während der Erstellung und Bearbeitung von Karteikarten erreicht. Die hier genutzten Sprachen Markdown und HTML tragen zudem dazu bei, die Anforderung der Editierbarkeit zu erfüllen.
+Zur Erfüllung der Anforderung \glqq Source-file access\grqq{} werden Import- und Exportfunktionen implementiert, die auf eine Trennung von Layout und Inhalt abzielen und in einfachen Textdateien aufrufbar sind. 
+Neben der Trennung von Layout und Inhalt ist eine weitere Forderung des Single-Sourcings mit nur einer Quelldatei zu arbeiten, ohne die Erzeugung unnötiger Kopien. Dies soll durch ein internes Versionskontrollsystem erreicht werden, welches auch die benötigte Fachkenntnis weiter reduzieren soll. 
+Die Plattformunabhängigkeit wird zunächst durch eine webbasierte Anwendung erreicht. In der späteren Entwicklung soll Kicards auch offline und auf mobilen Endgeräten zur Verfügung stehen. \\
 
-Innerhalb der Rubrik Design ist ein notwendiges und damit unter must-have kategorisiertes Kriterium ein ansprechendes Design zu entwerfen, welches dem Nutzer zum Lernen motiviert. 
-In der ersten Übersicht sollten abzuarbeitende Kurse ggfs. nach Prioritäten oder Fälligkeiten sortiert werden können. \\
+Weitere allgemeine Funktionen sind zum einen ein ansprechendes Design, welches dem Nutzer zum Lernen motiviert oder eine Übersicht der abzuarbeitende Kursen, ggfs. nach Prioritäten oder Fälligkeiten sortiert. Weiterhin sollten während der Eingabe mathematischer Formeln, Bilder und Audiodateien verarbeitet werden können. \\
 
-Für die Unterstützung der Zusammenarbeit sollten private Kurse zunächst für die Öffentlichkeit bereitgestellt werden können. Um die Qualität der Karteikarten in Zusammenarbeit mit anderen zu steigern, sind qualitativ minderwertigere Karten auszusortieren. Hierfür ist zunächst ein Votesystem für Kurse und einzelne Karten notwendig, die allerdings auch hier unter der could-have Kategorie fallen. Für eine optimale Zusammenarbeit sollte jedoch langfristig ein internes Versionsverwaltungssystem implementiert werden.\\
+Statistiken können den Nutzern dabei helfen, die Motivation zu steigern. Übersichten über Karten in den verschiedenen Phasen oder dem Lernfortschritt nach einer Lernsession, sind Beispiele für solche Statistiken. Weitere Beispiele sind die Benutzeraktivität oder Prognosen über zukünftig anfallende Karten. Die Gedächtnisleistung nach Tageszeit, wie in Anki implementiert, ist eine sehr nützliche Funktion, um sein Lernverhalten dementsprechend anzupassen. Sie erhält hier jedoch zunächst eine niedrigere Relevanz. \\
 
-Zur Formatierung der Texte können die Programmiersprachen Markdown und HTML genutzt werden. So sind die Quelldateien auch in andere Programme übertragbar und erfüllen somit auch die Anforderung der Editierbarkeit. Weitere Eingabemöglichkeiten, die implementiert werden sollten, sind mathematischen Formeln, Bilder und Audiodateien. \\
+Notwendige Einstellungsmöglichkeiten wurden nicht identifiziert. Optionen, wie die Anzahl der täglichen Vokabeln oder der neuen Vokabeln pro Tag könnten bereitgestellt werden, sind jedoch nicht zwingend erforderlich. Weitere Möglichkeiten betreffen die Handhabung der Phasenzurücksetzung oder das Warteintervall für einzelne Phasen. Zusätzliche Optionen, die allerdings in die \emph{could-have}-Kategorie fallen, sind die Vermeidung verwandte Karten am selben Tag zu lernen oder Wahrscheinlichkeiten für Phasen anzugeben. 
 
-In Bezug der Lernmethoden soll im Rahmen der Anwendungen das Leitner-System, sowie das Spaced Learning implementiert werden. Weitere Lernmethoden die unter der Kategorie should-have fallen, sind das Lernen der schlechtesten Karteikarten und die Lernsession der selbst ausgewählten Karten. Auch die Möglichkeit alle Karten oder die fälligen Karten nach Kurs oder Kategorie zu Lernen, sollten berücksichtigt werden. \\
+\subsubsection{Lernmethoden}
+Die Leitner-Methode wird zunächst mit einer festen Anzahl von 8 Phasen implementiert. In der ersten Phase 0 werden zunächst neu erstellte Karten abgespeichert, die bisher noch nicht gelernt wurden. Die darauffolgenden Phasen sind mit Wartezeiten in Tagen oder einer Wahrscheinlichkeit ausgestattet. Diese legen fest, wann eine Karte wiederholt. Nach richtiger Beantwortung einer Frage in der Lernsession "Leitner" wird das nächste Abfragedatum, entsprechend der neuen Phase aktualisiert. Während bei einer falschen Beantworten das nächste Abfragedatum unberührt bleibt. In beiden Fällen wird jedoch das letzte Abfragedatum aktualisiert.
 
-Statistiken können dem Benutzer dabei helfen seine Motivation zu steigern. Übersichten über Karten in den verschiedenen Phasen oder über gelernten Karten nach einer Lernsession sind daher wichtig, um die Motivation beizubehalten. Neben diesen Statistiken können noch weitere, wie die über die Benutzeraktivität oder eine Prognose über in Zukunft anfallende Karten implementiert werden. Die in Anki eingebettete Statistik über die Gedächtnisleistung nach Tageszeit ist eine sehr nützliche Funktion, um sein Lernverhalten dementsprechend anzupassen, ist allerdings nicht notwendig, um dieses Projekt umzusetzen und fällt daher unter die could-have Kategorie.
+Beim Spaced-Learning Algorithmus werden die Fragen nicht mit Richtig oder Falsch beantwortet, sondern durch Einteilung \emph{nochmal}(0 Sek), \emph{schwer} (10 Min), \emph{mittel}(60 Minuten), \emph{leicht}(6 Tage) und \emph{ganz leicht}(30 Tage) eingeordnet. Auch hier wird jeweils dementsprechend das nächste Abfragedatum verändert. 
+Eine Lernsession hat bei dieser Methode eine Gesamtdauer von 15 Minuten. Nach Ablauf einer Einheit ist eine neue Session erst nach einer 10 minütigen Pause wieder startbar. Dadurch soll die Aufnahmefähigkeit, unter anderem durch Anwendung des Mircolearnings gesteigert werden. \\
 
-Einstellungsmöglichkeiten, die unbedingt implementiert werden sollten, gibt es nicht. Lediglich als should-have können Optionen, wie die Anzahl der täglichen Vokabeln oder die Anzahl der neuen Vokabeln pro Tag bereitgestellt werden. Weitere Möglichkeiten betreffen die Ereignisse bei falscher Antwort oder das Warteintervall für einzelne Phasen. Zusätzliche hier aufgelistete Optionen, die allerdings in die could-have Kategorie fallen sind verwandte Karten nicht am selben Tag zu lernen oder eine Wahrscheinlichkeit für die einzelnen Phasen anzugeben. 
+Beim Start der Lernmethode \glqq{}schlechtesten Karten\grqq{} werden aus der ausgewählten Kollektion zunächst alle Karten ermittelt. Von diesen ermittelten Karten werden jeweils die 10 schlechtesten Fehlerquoten identifiziert und zur Lernsession hinzugefügt. Diese werden dann im weiteren Verlauf solange wiederholt, bis alle Karten richtig beantwortet wurden. \\
+
+Die Lernmethode \glqq{}nach Fälligkeit\grqq{} ist etwas aufwändiger zu Implementieren. Hierzu ist eine Prognose erforderlich, die ermittelt, wie viele Karten durchschnittlich im Laufe eines Tages gelernt werden müssen um den Termin einzuhalten. Hierzu könnten Statistiken über die jeweilige Lerngeschwindigkeit oder auch Metadaten über die aktuelle Kollektion genutzt werden. \\
+
+Für die nächste Lernmethode muss bei Erstellung oder Bearbeitung von Karten eine Relevanz von 0 (nicht wichtig) bis 5 (sehr wichtig) angegeben werden. Beim Start einer Abfrage kann der Nutzer festlegen, welchen Relevanzgrad er gerade lernen möchte. \\
+
+Die Kartenauswahl für das intensive Lernen kann in jeder Abfrage mit dem Button \glqq für später merken\grqq{} ausgewählt werden. Kehrt der Nutzer zur Übersicht der Kollektion zurück, kann dieser eine intensive Session mit den ausgewählten Karten starten. Nach einem Durchlauf der Lernsession wird diese dann so oft wiederholt, bis alle Karten in einer Session richtig beantwortet wurden.
 
 
+\subsubsection{Kollaboratives Lernen und Bearbeiten}
+Um das kollaborative Arbeiten zu Unterstützen sind verschiedenste Funktionen notwendig. Zunächst müssen Kollektionen auch als öffentliche Kurse zur Verfügung gestellt werden können. Um einer Kollektion dann als Nutzer zu folgen, kann er sich hierzu als Follower eintragen. Neben dem Lernen bekommt ein Follower das Recht, dem Ersteller einer Karte einen Vorschlag zur Verbesserung einzureichen, sowie diesbezüglich weiterhin mit dem Ersteller zu kommunizieren. Andere Teilnehmer einer Kollektion können diesen Vorschlag ebenfalls einsehen, wenn diese dazu eine Schaltfläche zur Einblendung betätigen. Auch kann er weitere Karten zur Kollektion, durch eine direkte Erstellung oder einem Import hinzufügen. Ihm sollte zudem die Möglichkeit eingerichtet werden, öffentliche Kollektionen auf lokale Systeme zu speichern, um diese auch offline Nutzen, eigene Versionen zu erstellen oder die Dateien in anderen Programmen öffnen zu können. \\
 
+Um schlechte Karten aussortieren zu können, wird ein Votesystem für jede Karteikarte implementiert. So können Karten, auch ohne eine Zustimmung des Erstellers gelöscht werden, sobald ein gewisser Prozentsatz dafür stimmt. Um die Anzahl der Follower eines Kurses nicht durch langfristig inaktive Nutzern zu verfälschen, werden diese nach einer gewissen Zeit aus der Liste der Follower entfernt. 
 
 \subsection{Datenbankmodellierung}
-Der nächste Schritt nach Festlegung der geforderten Funktionen besteht in der Modellierung der Datenbank. Hier wird im ersten Schritt das Datenbankmodell in Abbildung 4 skizziert und anschließend die Zusammenhänge und Abhängigkeiten erläutert. 
+Der nächste Schritt, nach Festlegung der geforderten Funktionen besteht in der Modellierung der Datenbank. Hier wird im ersten Schritt das Datenbankmodell in Abbildung 4 skizziert und anschließend die Zusammenhänge und Abhängigkeiten erläutert.  
 
-\begin{figure}[htbp]
+\begin{figure}[h]
  \includegraphics[width = 15cm]{databasemodel.png}
  \caption{Datenbankmodel von Kicards}
  \label{fig:datenbankmodel}
@@ -213,59 +227,22 @@ In der Tabelle Benutzer werden die E-Mail Adresse (\emph{email}), der Benutzerna
 Die letzte Tabelle stellt die Aktivitäten des Benutzers dar. Diese wird hauptsächlich für die Ermittlung der Aktivitätsstatistiken verwendet. Hierzu wird der jeweilige Benutzer (\emph{user{\_}id}), ein Zeitstempel (\emph{timestamp}), die Anzahl der in einer Lernsession richtig beantworteten Karten, sowie die Gesamtzahl der Karten, die in dieser Session behandelt wurde. Als letztes Attribut wird noch die Lernmethode (\emph{learning{\_}method}) erfasst, um die Aktivität nach Methode filtern zu können.
 
 
+\section{Aktueller Entwicklungsstand und Ausblick}
+Im Rahmen dieser Seminararbeit konnte erst ein Teil des Funktionsumfang der Anwendung implementiert werden und wird innerhalb der Abbildung 3 dokumentiert. Die Arbeit stellt jedoch ein Konzept für Karteikarten bereit, auf dem in weiteren Entwicklung aufgebaut werden kann. Zwar wurde noch nicht alle Funktionen umgesetzt, jedoch konnten die meisten \emph{must-have}-Anforderungen und viele \emph{should-have}-Anforderungen erfüllt werden. 
 
+Die Kriterien an OER-Software wurden bisher größtenteils erfüllt. In weiteren Entwicklungsschritten soll zunächst eine mobile Anwendung implementiert werden, die auch einen offline Nutzung der Karteikarten zulassen soll. Eine wichtige Funktionen einer mobilen Anwendung ist die Unterdrückung von Benachrichtigung, um den Lernfluss nicht zu unterbrechen.
 
-\subsection{Funktionsdokumentation}
-<<>noch in Arbeit>
-In diesem Abschnitt der Funktionsdokumentation werden bedeutende Funktionen, die zur Erfüllung der herausgearbeiteten Anforderungen benötigt werden erläutert. Zunächst wird die Kartenabfrage behandelt mit Berücksichtigung der verschiedenen Lernmethoden. Anschließend werden Funktionen zur Verwaltung der Kollektionen und Karteikarten skizziert. Zum Schluss werden noch Funktionen zur kollaborativen Zusammenarbeit und Bearbeitung von Kollektionen und Karteikarten behandelt. \\
+Nach Fertigstellung aller grundlegenden Funktionen, die zunächst nur eine alleinige Nutzung ermöglichen sollen, können weitere Funktionen zur Erfüllung der OER-Kriterien entwickelt werden. 
 
-!!! erfüllen Karteikarten in deinem Programm die OER Kriterien...Ja, weil ... !!!
+Dies kann die Vorbereitung auf eine kollaborative Plattform sein. Hierzu soll zunächst das Votesystem für einzelne Karten erstellt. Anschließend Kommunikationsmöglichkeiten innerhalb einer Kollektion und ein Vorschlagsystem, um die Zusammenarbeit zu ermöglichen.\\
 
-\subsubsection{Kartenabfragen}
-<<>noch in Arbeit>
-Zur Abfrage der Karteikarten im Sinne des Leitner-Systems wurden im Datenbankmodel die Phasen mit zugehörigen Wartezeiten oder auch wahlweise mit zugehörige Auswahlwahrscheinlichkeit skizziert. Während der Erstellung von Karten werden diese mit der ersten Phase 0 initiiert. Sobald die Leitner-Abfrage gestartet und eine Karte richtig beantwortet wurde, wird diese um eine Phase inkrementiert und das nächste Abfragedatum, entsprechend der aktuellen Phase um die jeweiligen Tage hoch gesetzt. Wurde diese jedoch falsch beantwortet, wird die Karte um eine Phase zurückgesetzt und das nächste Abfragedatum bleibt unberührt. Gleichzeitig, egal wie die Karte beantwortet wurde wird das letzte Abfragedatum \emph{last{\_}date{\_}leitner} auf den aktuellen Zeitpunkt gesetzt. \\
+Auch die bisher noch nicht implementierte Lernmethode kann in einer späteren Entwicklung noch hinzugefügt werden. Das Lernen zu einem bestimmten Fälligkeitstermin benötigt verschiedene Statistiken, die hier noch erst erstellt werden müssten. Verbesserungen könnten sich auch durch weitere Untersuchung von Spaced-Learning Algorithmen ergeben, um die Lerneffizienz weiterhin zu steigern.
 
-Beim Spaced-Learning Algorithmus werden die Fragen nicht mit Richtig oder Falsch beantwortet, sondern wird in die jeweilige Qualität leicht, mittel und schwer eingeordnet. Karten die in der Kategorie leicht zugeordnet wurden, werden innerhalb der nächsten xx Tage nochmal abgefragt. Karten in der Kategorie mittel werden in den nächsten 60 Minuten nochmals abgefragt und die Karten in der Kategorie schwer in den nächsten 10 Minuten. Hierzu wird jeweils dementsprechend das nächste Abfragedatum verändert. \\
+Für eine Erweiterung der Nutzergruppe kann die Anwendung noch internationalisiert werden. Hierzu kann beispielsweise eine Tabelle erstellt werden, in der alle Benachrichtigungen und  Beschriftungen in verschiedene Sprachen übersetzt werden. Mit einer Option zur Sprachauswahl in den Einstellung können dann alle Daten dementsprechend angepasst werden.
 
-Im Falle der Lernmethode \glqq{}schlechtesten Karten \grqq{} werden aus der ausgewählten Kollektion alle Karten ermittelt. Von diesen ermittelten Karten werden jeweils die 10 schlechtesten identifiziert und zur Lernsession hinzugefügt. Diese werden solange wiederholt bis alle Karten richtig beantwortet wurden. \\
+Nicht zuletzt sollten noch Sicherheitsaspekte und Pflichten aus dem Datenschutz berücksichtigt werden. Gefahren, wie SQL-Injektions werden zwar durch die wtf-Forms von Flask verhindert, jedoch könnten es andere Sicherheitslücken geben, die vorher geprüft werden sollten. \\
 
-Die Lernmethode nach Fälligkeit ist aufwändiger zu Implementieren. Hierzu ist eine Prognose erforderlich, die ermittelt wie viele Karten durchschnittlich im Laufe eines Tages gelernt werden müssen um den Termin einzuhalten. Hier können zudem noch einige Tage als Puffer berücksichtigt werden, die vom Fälligkeitstermin abgezogen werden. Innerhalb eines Lerntages wird anschließend die Anzahl der noch zu lernenden Karten angezeigt, um das Ziel zu erfüllen. \\
-
-Während einer Abfrage oder der Erstellung von Karten kann jeweils die Relevanz von 0 (nicht wichtig) bis 5 (sehr wichtig) angegeben werden. Beim Start der Abfrage kann der Nutzer festlegen, welchen Relevanzgrad er lernen möchte. Hierzu werden aus der ausgewählten Kollektion alle zugehörigen Karten abgefragt und dem Benutzer in der Lernsession angezeigt. \\
-
-Die Kartenauswahl für das intensive Lernen kann in jeder Abfrage mit dem Button \glqq für später merken\grqq{}
- ausgewählt werden. Kehrt der Nutzer zur Übersicht der Kollektion zurück, kann dieser die intensive Session mit den ausgewählten Karten starten. Nach einem Durchlauf der Lernsession wird diese nochmals neu gestartet für den Fall falls mindestens eine Karte falsch beantwortet wurde. Wurden im Gegensatz dazu alle Karten richtig beantwortet wird die Lernsession beendet.
-
-\subsubsection{Verwaltung von Karteikarten}
-<<>noch in Arbeit>
-
-
-
-
-
-\subsubsection{Kollaboratives Lernen und Bearbeiten}
-<<>noch in Arbeit>
-Um das kollaborative Arbeiten zu Unterstützen sind Funktionen, wie das Importieren der Karten in öffentliche Kollektionen und ein Votesystem für die Qualität der Karten erforderlich. 
-
-Um eine öffentliche Kollektion zu erstellen, muss eine private Kollektion für die Öffentlichkeit freigegeben werden. Dies geschieht durch das Bestätigen eines Buttons. Mit der Freigabe ist es anderen Benutzern möglich dieser Kollektion zu folgen und auch Karteikarten in diese zu importieren. 
-
-Zu diesem Zweck kann der Benutzer aus der Kartenübersicht verschiedene Karteikarten auswählen und mit Auswahl der öffentlichen Kollektion, die Karten hinzufügen. 
-
-Für eine Gewährleistung der Qualität ist ein Votesystem innerhalb der Kollektion erforderlich. Sobald die schlechten Votes der Anzahl der Follower um 80{\%} übersteigt, wird die Karte aus der Kollektion gelöscht. Eine Problematik die hier berücksichtigt werden muss, ist die Löschung der Follower aus der entsprechenden Tabelle, wenn diese eine Inaktivität von beispielsweise 90 Tagen aufweisen. \\
-
-!!! Teilen von Karteikarten aus der OER Perspektive !!!
-
-\section{Ausblick}
-<<>noch in Arbeit>
-Im Rahmen dieser Seminararbeit konnte der volle Funktionsumfang der webbasierten Anwendung noch nicht implementiert werden. Im Abschnitt der Weiterentwicklung werden bereits implementierte Funktionen in Abbildung 5 skizziert und der weitere Verlauf der Weiterentwicklung dargestellt. 
-
-\subsection{Weiterentwicklung}
-<<>noch in Arbeit>
-Zur besseren Übersicht der bereits implementierten Funktionen wird auf die Tabelle der must-, should- und could-have Anforderungen zurückgegriffen, die in der nachfolgenden Abbildung 5 dargestellt wird.
-
-
-
-
+Kicards kann dazu beitragen die Hürden zur Bildung zu verringern. Sie soll sich dank des ausgearbeiteten Konzepts zu einer kollaborative Plattform entwickelt, die frei für jeden zugänglich ist und effiziente Lernmethoden anbietet, mit der Lerneinheiten langfristig in Erinnerung bleiben
 
 % The following is for the Emacs users out there... :-)
 %%% Local Variables:
